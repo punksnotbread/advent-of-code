@@ -1,6 +1,7 @@
 use std::fs;
+use aoc_utils::bench;
 
-fn main() {
+fn part_1() {
     let file = fs::read_to_string("./input.txt").unwrap();
     let mut res: i32 = 0;
     for row in file.lines() {
@@ -26,4 +27,8 @@ fn main() {
     }
 
     println!("{res}")
+}
+
+fn main() {
+    bench(part_1)
 }
