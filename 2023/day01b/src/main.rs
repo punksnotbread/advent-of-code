@@ -1,7 +1,7 @@
 use std::fs;
 use aoc_utils::bench;
 
-fn part_2() {
+fn solution() {
     let file = fs::read_to_string("./input.txt").unwrap();
     let mut res: i32 = 0;
     for row in file.lines() {
@@ -47,5 +47,5 @@ fn part_2() {
 }
 
 fn main() {
-    bench(part_2)
+    bench(solution)
 }
