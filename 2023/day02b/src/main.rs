@@ -1,7 +1,7 @@
 use aoc_utils::bench;
 use std::fs;
 
-fn solution() {
+fn solve() {
     let file = fs::read_to_string("./input.txt").unwrap();
     let mut res: usize = 0;
 
@@ -50,5 +50,5 @@ fn solution() {
 }
 
 fn main() {
-    bench(solution)
+    bench(solve)
 }

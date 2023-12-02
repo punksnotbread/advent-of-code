@@ -5,7 +5,7 @@ const LIMIT_RED: usize = 12;
 const LIMIT_GREEN: usize = 13;
 const LIMIT_BLUE: usize = 14;
 
-fn solution() {
+fn solve() {
     let file = fs::read_to_string("./input.txt").unwrap();
     let mut res: usize = 0;
 
@@ -57,5 +57,5 @@ fn solution() {
 }
 
 fn main() {
-    bench(solution)
+    bench(solve)
 }
