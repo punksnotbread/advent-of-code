@@ -10,8 +10,7 @@ fn solve() {
     let mut result: i32 = 0;
 
     for row in file.lines() {
-        let mut it = re.captures_iter(row);
-        let caps = it.next().unwrap();
+        let caps = re.captures(row).unwrap();
 
         let winning = &caps["winning"]
             .trim()
