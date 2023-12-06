@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 aoc_utils = {path = "../utils"}
-regex = "1.10.2"
