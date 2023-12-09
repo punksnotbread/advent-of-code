@@ -47,7 +47,7 @@ fn solve() {
         let jokers = cards_in_hand.iter().filter(|&&x| x == 0).count() as u8;
 
         if jokers == 5 {
-            cards_in_hand = vec![14, 14, 14, 14, 14];
+            cards_in_hand = vec![0, 0, 0, 0, 0];
             hands.push(Hand {
                 cards: cards_in_hand,
                 htype: HandType::FiveOfAKind,
@@ -59,9 +59,7 @@ fn solve() {
                     .iter()
                     .copied()
                     .fold(HashMap::new(), |mut map, val| {
-                        map.entry(val)
-                            .and_modify(|frq| *frq += 1)
-                            .or_insert(1);
+                        map.entry(val).and_modify(|frq| *frq += 1).or_insert(1);
                         map
                     });
 
@@ -69,7 +67,7 @@ fn solve() {
             let max_key = *frequencies.iter().max_by_key(|entry| entry.1).unwrap().0;
             *frequencies.entry(max_key).or_insert(0) += jokers;
 
-            let mut hand_type: HandType = match frequencies.len() {
+            let hand_type: HandType = match frequencies.len() {
                 1 => HandType::FiveOfAKind,
                 2 => match frequencies.values().any(|&x| x == 4) {
                     true => HandType::FourOfAKind,
@@ -83,10 +81,6 @@ fn solve() {
                 5 => HandType::HighCard,
                 _ => unreachable!(),
             };
-            // cards_in_hand
-            //     .iter_mut()
-            //     .filter(|x| **x == 0)
-            //     .for_each(|x| *x = 11);
 
             hands.push(Hand {
                 cards: cards_in_hand,
@@ -106,7 +100,6 @@ fn solve() {
         .enumerate()
         .fold(0, |acc, (i, hand)| acc + (i + 1) as i32 * hand.bid);
 
-    // assert_eq!(res, 253473930);
     println!("{res:?}");
 }
 
