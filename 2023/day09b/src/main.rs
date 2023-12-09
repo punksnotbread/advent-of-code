@@ -17,7 +17,9 @@ fn solve() {
     let history = parse_input();
     let mut res: i32 = 0;
 
-    for entry in history {
+    for mut entry in history {
+        entry.reverse(); // All that was needed.
+
         let mut seqs = vec![];
         seqs.push(entry.clone());
 
