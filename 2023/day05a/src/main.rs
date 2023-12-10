@@ -1,6 +1,4 @@
 use aoc_utils::bench;
-use regex::Regex;
-use std::collections::HashSet;
 use std::fs;
 
 fn parse_map(map: &str) -> Vec<(usize, usize, usize)> {
