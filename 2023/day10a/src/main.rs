@@ -28,12 +28,13 @@ fn find_next(
         (Direction::Left, (0, -1)),
     ];
 
-    let last_coord: char = if visited.is_empty() {
+    let last_char: char = if visited.is_empty() {
         'S'
     } else {
         let last_coords = visited.last().unwrap();
         map[last_coords.0.y as usize][last_coords.0.x as usize]
     };
+
     let last_dir: Direction = if visited.is_empty() {
         Direction::Start
     } else {
@@ -65,11 +66,7 @@ fn find_next(
             continue;
         }
 
-        // if new_char == 'S' {
-        //     //println!("New character is {new_char}, returning.");
-        //     return new_coord;
-        // }
-
+        // Don't try going via previous direction.
         if direction == Direction::Up && last_dir == Direction::Down {
             continue;
         }
@@ -83,19 +80,20 @@ fn find_next(
             continue;
         }
 
-        if direction == Direction::Up && !"S|JL".contains(|c| c == last_coord) {
+        // Don't try and visit illogical directions.
+        if direction == Direction::Up && !"S|JL".contains(|c| c == last_char) {
             //println!("Can't go via {last_coord} because of direction {direction}");
             continue;
         }
-        if direction == Direction::Down && !"S|7F".contains(|c| c == last_coord) {
+        if direction == Direction::Down && !"S|7F".contains(|c| c == last_char) {
             //println!("Can't go via {last_coord} because of direction {direction}");
             continue;
         }
-        if direction == Direction::Right && !"S-LF".contains(|c| c == last_coord) {
+        if direction == Direction::Right && !"S-LF".contains(|c| c == last_char) {
             //println!("Can't go via {last_coord} because of direction {direction}");
             continue;
         }
-        if direction == Direction::Left && !"S-7J".contains(|c| c == last_coord) {
+        if direction == Direction::Left && !"S-7J".contains(|c| c == last_char) {
             //println!("Can't go via {last_coord} because of direction {direction}");
             continue;
         }
